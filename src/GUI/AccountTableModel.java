@@ -1,14 +1,15 @@
 package GUI;
 
 
+import host.Account;
+import host.ForestServiceSoapProxy;
+
 import javax.swing.table.AbstractTableModel;
 
-import localhost.Account;
-import localhost.ForestServiceSoapProxy;
 public class AccountTableModel extends AbstractTableModel {
 
 	/**
-	 *TableModel designed for handling an ArrayList of Student objects
+	 *TableModel designed for handling an ArrayList of Account objects
 	 * @author CweetSixteen
 	 *
 	 */
@@ -18,7 +19,7 @@ public class AccountTableModel extends AbstractTableModel {
 		private String[] columnNames = {"Name", "Password" };
 		
 		/**
-		 * Takes a ArrayList of Student objects
+		 * Takes a ArrayList of Account objects
 		 * @param list
 		 */
 		public AccountTableModel(Account[] list){
@@ -27,7 +28,7 @@ public class AccountTableModel extends AbstractTableModel {
 		}
 		
 		/**
-		 * Creates an instance of the StudentTableModel
+		 * Creates an instance of the AccountTableModel
 		 */
 		
 		/**

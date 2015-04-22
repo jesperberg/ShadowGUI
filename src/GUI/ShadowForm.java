@@ -1,5 +1,7 @@
 package GUI;
 
+import host.Account;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -17,8 +19,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
-
-import localhost.Account;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -53,7 +53,13 @@ public class ShadowForm extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ShadowForm() {
+	public ShadowForm() 
+	{
+		intitialize();
+	}
+		
+	private void intitialize()
+		{		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -66,7 +72,7 @@ public class ShadowForm extends JFrame {
 		contentPane.add(tabbedPane);
 		
 		JPanel panel = new JPanel();
-		tabbedPane.addTab("New tab", null, panel, null);
+		tabbedPane.addTab("File Search", null, panel, null);
 		panel.setLayout(null);
 		
 		JButton btnSearchFile = new JButton("Search file");
@@ -109,10 +115,10 @@ public class ShadowForm extends JFrame {
 		txtTextInput.setColumns(10);
 		
 		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_1, null);
+		tabbedPane.addTab("Find Accounts", null, panel_1, null);
 		panel_1.setLayout(null);
 		
-		JButton btnAccount = new JButton("Press me!");
+		JButton btnAccount = new JButton("Retrieve Accounts.");
 		btnAccount.setBounds(330, 199, 89, 23);
 		panel_1.add(btnAccount);
 		
@@ -125,10 +131,17 @@ public class ShadowForm extends JFrame {
 		btnAccount.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				Account[] accounts = controller.readAccount();
-				AccountTableModel model = new AccountTableModel(accounts);
-				table.setModel(model);
+			public void actionPerformed(ActionEvent e)  {
+				Account[] accounts;
+				try {
+					accounts = DbAccess.readAccount();
+					AccountTableModel model = new AccountTableModel(accounts);
+					table.setModel(model);
+					
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
