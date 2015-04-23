@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Font;
 
 
 
@@ -76,7 +77,7 @@ public class ShadowForm extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnSearchFile = new JButton("Search file");
-		btnSearchFile.setBounds(82, 5, 83, 23);
+		btnSearchFile.setBounds(42, 5, 123, 23);
 		panel.add(btnSearchFile);
 		
 		btnSearchFile.addActionListener(new ActionListener(){
@@ -119,13 +120,14 @@ public class ShadowForm extends JFrame {
 		panel_1.setLayout(null);
 		
 		JButton btnAccount = new JButton("Retrieve Accounts.");
-		btnAccount.setBounds(330, 199, 89, 23);
+		btnAccount.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnAccount.setBounds(291, 186, 138, 36);
 		panel_1.add(btnAccount);
 		
 		Account[] temp = new Account[0];
 		AccountTableModel accountModel = new AccountTableModel(temp);
 		table = new JTable(accountModel);
-		table.setBounds(0, 0, 320, 222);
+		table.setBounds(0, 0, 281, 222);
 		panel_1.add(table);
 		
 		btnAccount.addActionListener(new ActionListener() {
